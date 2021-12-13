@@ -1,0 +1,24 @@
+package com.formation.parking.dao.impl;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
+import org.springframework.web.client.RestTemplate;
+
+import com.formation.parking.dao.ParkingAPIDAO;
+import com.formation.parking.dao.entity.ReponseParkingAPIEntity;
+
+
+@Repository
+public class ParkingAPIDAOImpl implements ParkingAPIDAO {
+	private static final String URL_API_OPEN_DATA ="https://data.nantesmetropole.fr/api/records/1.0/search/?dataset=244400404_parkings-publics-nantes-disponibilites&q=&rows=-1&facet=grp_nom&facet=grp_statut";
+			//FAIRE DES REQUETE HTTP SUR UNE URL
+	@Autowired
+	private RestTemplate restTemplate;
+	
+	@Override
+	public ReponseParkingAPIEntity getListeParkings() {
+		//getbody C'EST POUR RECUPERER LE CORS DE L'URL
+		return restTemplate.getForEntity(URL_API_OPEN_DATA, ReponseParkingAPIEntity.class).getBody();
+	}
+
+}
