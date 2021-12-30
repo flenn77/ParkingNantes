@@ -34,6 +34,7 @@ public class ParkingServiceImpl implements ParkingService {
 			record.getFields();
 			Parking parking = new Parking();
 			// recuperer le grpnom de fields et l'affecter a nom de la classe parking
+			parking.setIdentifiant(Integer.parseInt(record.getFields().getIdobj()));
 			parking.setNom(record.getFields().getGrpnom());
 			parking.setStatut(getLibelleStatut(record));
 			parking.setNbPlaceDispo(record.getFields().getGrpDisponible());
