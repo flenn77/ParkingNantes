@@ -1,0 +1,13 @@
+
+<bR>
+<mat-spinner style="margin: 0 auto;" color="accent" diameter="10" *ngIf="!isLoaded"></mat-spinner>
+
+
+<mat-card *ngFor="let parking of parkings" class="parking-card">
+
+    <span> Parking : {{parking.nom}} </span> <span style="float: right;" [ngStyle]="calculStyleStatut(parking)" >{{parking.statut}}</span>
+    <br><span *ngIf="parking.statut !== 'data non dispo'"> Places Disponibles : {{parking.nbPlaceDispo}} </span>
+    <br><span> Places Disponibles : {{parking.id}} </span>
+
+</mat-card>
+<bR>
